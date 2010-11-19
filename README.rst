@@ -3,4 +3,4 @@ dotfiles
 
 dotvim
 ------
-    ln -s dotfiles ~/.vim
+    ln -s dotfiles/dotvim ~/.vim
