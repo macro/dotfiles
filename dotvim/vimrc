@@ -4,14 +4,10 @@ call pathogen#helptags()
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
 set tags=tags
 
-set foldmethod=indent
 set number
 set autoindent
 set viminfo='20,\"50
-syntax on
 
-filetype on
-filetype plugin on
 set tabstop=4
 set softtabstop=4
 set shiftwidth=4
@@ -21,9 +17,15 @@ set smarttab
 set showmatch
 set hlsearch
 set incsearch
+set foldmethod=indent
+set foldlevel=10
 " set cursorline
 " set listchars=tab:▸\ ,eol:¬
 " set list
+
+syntax on
+filetype on
+filetype plugin on
 
 autocmd FileType python call SetPython()
 function! SetPython() 
@@ -34,10 +36,10 @@ function! SetPython()
     nmap <C-c><C-c> :!pyflakes %
     nmap <C-c><C-t> :!nosetests %
     autocmd BufWritePre *.py %s/\s\+$//e
-    abbreviate prd print "*** [DEBUG]
-    abbreviate pdb import pdb; pdb.set_trace()
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
     match OverLength /\%81v.\+/
+    abbreviate prd print "*** [DEBUG]
+    abbreviate pdb import pdb; pdb.set_trace()
 endfunction
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
@@ -47,7 +49,6 @@ endfunction
 " nmap <silent> <leader>w :set wrap!<CR>
 " nmap <silent> <leader>s :set spell!<CR>
 " nmap <silent> <leader>n :silent :nohlsearch<CR>
-
 
 " windows switching
 map <C-k> <C-W>k
