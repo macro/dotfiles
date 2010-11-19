@@ -6,7 +6,7 @@ set tags=tags
 
 set foldmethod=indent
 set number
-set ai
+set autoindent
 set viminfo='20,\"50
 syntax on
 
@@ -19,6 +19,11 @@ set expandtab
 set backspace=2
 set smarttab
 set showmatch
+set hlsearch
+set incsearch
+" set cursorline
+" set listchars=tab:▸\ ,eol:¬
+" set list
 
 autocmd FileType python call SetPython()
 function! SetPython() 
@@ -34,3 +39,33 @@ function! SetPython()
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
     match OverLength /\%81v.\+/
 endfunction
+
+" some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
+
+" let mapleader = ","
+" nmap <silent> <leader>l :set list!<CR>
+" nmap <silent> <leader>w :set wrap!<CR>
+" nmap <silent> <leader>s :set spell!<CR>
+" nmap <silent> <leader>n :silent :nohlsearch<CR>
+
+
+" windows switching
+map <C-k> <C-W>k
+map <C-j> <C-W>j
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" tab switching
+" map <D-S-]> gt
+" map <D-S-[> gT
+" map <D-1> 1gt
+" map <D-2> 2gt
+" map <D-3> 3gt
+" map <D-4> 4gt
+" map <D-5> 5gt
+" map <D-6> 6gt
+" map <D-7> 7gt
+" map <D-8> 8gt
+" map <D-9> 9gt
+" map <D-0> :tablast<CR>
+
