@@ -1,3 +1,6 @@
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
 set tags=tags
 
