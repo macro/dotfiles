@@ -1,8 +1,10 @@
 dotfiles
 =======
-
-    cd dotfiles
+::
+	cd dotfiles
+::
     git submodule init
+::
     git submodule update
 
 dotvim

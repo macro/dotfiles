@@ -1,4 +1,4 @@
-alias ls='ls -alG'
+alias ls='ls -alG --color=auto'
 bind -m vi-insert "\C-l":clear-screen
 set -o vi
 
@@ -8,7 +8,15 @@ git ()
     #
     # alias git commands and set some default flags
     #
-
+    ENV=
+    BRANCH=
+    $GIT branch &> /dev/null
+    if  [ "$?" == "0" ]; then
+        BRANCH="[`$GIT branch | grep '*' | cut -c 3-`]"
+    fi
+    if [ "$VIRTUAL_ENV" != "" ]; then
+        ENV="-(`basename $VIRTUAL_ENV`)"
+    fi
     if [ "$1" == "st" ]; then
         shift 1
         $GIT status $@
@@ -27,7 +35,7 @@ git ()
     else
         $GIT $@
     fi
-    export PS1="(`basename $VIRTUAL_ENV`)-[`$GIT branch | grep '*' | cut -c 3-`]: \W\$ " 
+    export PS1="\u@\h$ENV$BRANCH:\W\$ " 
 }
 
 pyf ()
