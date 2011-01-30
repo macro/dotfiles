@@ -8,8 +8,8 @@ git ()
     #
     # alias git commands and set some default flags
     #
-    ENV=
-    BRANCH=
+    local ENV
+    local BRANCH
     $GIT branch &> /dev/null
     if  [ "$?" == "0" ]; then
         BRANCH="[`$GIT branch | grep '*' | cut -c 3-`]"
