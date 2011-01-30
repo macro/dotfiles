@@ -1,4 +1,4 @@
-alias ls='ls -alG --color=auto'
+alias ls='ls -alG'
 bind -m vi-insert "\C-l":clear-screen
 set -o vi
 
@@ -51,3 +51,5 @@ pyf ()
     fi
 }
 
+PYTHONSTARTUP=~/dotfiles/pythonrc.py
+export PYTHONSTARTUP
