@@ -50,11 +50,12 @@ endfunction
 " nmap <silent> <leader>s :set spell!<CR>
 " nmap <silent> <leader>n :silent :nohlsearch<CR>
 
-" windows switching
-map <C-k> <C-W>k
-map <C-j> <C-W>j
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" window switching
+let mapleader = ","
+nmap <silent> <leader>k <C-W>k
+nmap <silent> <leader>j <C-W>j
+nmap <silent> <leader>h <C-W>h
+nmap <silent> <leader>l <C-W>l
 
 " tab switching
 " map <D-S-]> gt
