@@ -10,3 +10,21 @@
 [submodule "dotvim/bundle/python_match"]
 	path = dotvim/bundle/python_match
 	url = https://github.com/vim-scripts/python_match.vim.git
+[submodule "dotvim/bundle/wombat256"]
+	path = dotvim/bundle/wombat256
+	url = https://github.com/vim-scripts/wombat256.vim.git
+[submodule "dotvim/bundle/wombat"]
+	path = dotvim/bundle/wombat
+	url = https://github.com/cschlueter/vim-wombat.git
+[submodule "dotvim/bundle/zenburn"]
+	path = dotvim/bundle/zenburn
+	url = https://github.com/vim-scripts/Zenburn.git
+[submodule "dotvim/bundle/inkpot"]
+	path = dotvim/bundle/inkpot
+	url = https://github.com/ciaranm/inkpot.git
+[submodule "dotvim/bundle/nerdtree"]
+	path = dotvim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotvim/bundle/yankring"]
+	path = dotvim/bundle/yankring
+	url = https://github.com/vim-scripts/YankRing.vim.git
