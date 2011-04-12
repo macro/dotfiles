@@ -31,7 +31,7 @@ autocmd FileType python call SetPython()
 function! SetPython() 
     colorscheme elflord
     setlocal keywordprg=pydoc
-    setlocal makeprg=python\ %   
+    setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
     nmap <C-c><C-c> :!pyflakes %
     nmap <C-c><C-t> :!nosetests %

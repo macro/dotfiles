@@ -1,5 +1,6 @@
 import os
 import sys
+import dis
 from code import InteractiveConsole
 from tempfile import mkstemp
 
@@ -18,6 +19,9 @@ except ImportError:
 else:
     import rlcompleter
     readline.parse_and_bind("tab: complete")
+
+__builtins__.dis = dis
+del dis
 
 #
 # pretty print
