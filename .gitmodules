@@ -28,3 +28,6 @@
 [submodule "dotvim/bundle/yankring"]
 	path = dotvim/bundle/yankring
 	url = https://github.com/vim-scripts/YankRing.vim.git
+[submodule "dotvim/bundle/solarized"]
+	path = dotvim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
