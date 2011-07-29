@@ -71,3 +71,7 @@ nmap <silent> <leader>l <C-W>l
 " map <D-9> 9gt
 " map <D-0> :tablast<CR>
 
+" delete hidden buffers
+autocmd BufReadPost fugitive://* set bufhidden=delete
+" show git branch in status line
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P

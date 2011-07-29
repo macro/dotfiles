@@ -1,6 +1,23 @@
 alias ls='ls -alG'
-bind -m vi-insert "\C-l":clear-screen
 set -o vi
+
+# set terminal title
+echo -ne "\033]0;${USER}@${HOSTNAME}\007"
+
+# enable vi in programs that support readline
+set editing-mode vi
+set keymap vi
+set convert-meta on
+
+# ^p check for partial match in history
+bind -m vi-insert "\C-p":dynamic-complete-history
+
+# ^n cycle through the list of partial matches
+bind -m vi-insert "\C-n":menu-complete
+
+# ^l clear screen
+bind -m vi-insert "\C-l":clear-screen
+
 
 GIT=`which git`
 git ()
