@@ -2,7 +2,9 @@ Vim Configuration
 =================
 
 Adding Bundles
--------------- ::
+-------------- 
+
+    ::
     cd ~/dotfiles
     git submodule add https://github.com/altercation/vim-colors-solarized
 
@@ -13,7 +15,9 @@ Reference
 ---------
 
 Folding
-^^^^^^^ ::
+^^^^^^^ 
+
+    ::
     zR    open all folds
     zM    close all folds
     za    toggle fold at cursor position
