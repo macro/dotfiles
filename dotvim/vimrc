@@ -29,7 +29,6 @@ set smartcase
 set smarttab
 set softtabstop=4
 set t_Co=256
-set t_vb=<Esc>|f
 set tabstop=4
 set viminfo='20,\"50
 set visualbell 
@@ -58,9 +57,6 @@ endfunction
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
 
 inoremap jk <Esc>
-noremap ; :
-noremap : ;
-
 noremap j gj
 noremap k gk
 
@@ -80,8 +76,8 @@ nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in 
 nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
 
 " tab movement
-nmap th :tabprevious<CR>
-nmap tl :tabnext<CR>
+nmap <silent> th :tabprevious<CR>
+nmap <silent> tl :tabnext<CR>
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
 " nmap <silent> <leader>l :set list!<CR>
@@ -109,3 +105,7 @@ nmap tl :tabnext<CR>
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " show git branch in status line
 set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+
+" remap :
+noremap ; :
+
