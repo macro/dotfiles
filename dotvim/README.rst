@@ -1,8 +1,7 @@
 Vim Configuration
 =================
 
-Adding Bundles
---------------:: 
+Adding Bundles :: 
 
     cd ~/dotfiles
     git submodule add https://github.com/altercation/vim-colors-solarized
@@ -13,8 +12,7 @@ Adding Bundles
 Reference
 ---------
 
-Folding
-^^^^^^^::
+Folding ::
 
     zR    open all folds
     zM    close all folds
