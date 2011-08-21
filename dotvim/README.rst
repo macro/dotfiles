@@ -1,6 +1,13 @@
 Vim Configuration
 =================
 
+Adding bundles
+    cd ~/dotfiles
+    git submodule add https://github.com/altercation/vim-colors-solarized
+
+    git add .
+    git ci -m "Added the solarized bundle"
+
 Reference
 ---------
 

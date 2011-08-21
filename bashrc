@@ -4,11 +4,6 @@ set -o vi
 # set terminal title
 echo -ne "\033]0;${USER}@${HOSTNAME}\007"
 
-# enable vi in programs that support readline
-set editing-mode vi
-set keymap vi
-set convert-meta on
-
 # ^p check for partial match in history
 bind -m vi-insert "\C-p":dynamic-complete-history
 

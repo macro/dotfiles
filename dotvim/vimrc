@@ -1,35 +1,48 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
-set tags=tags
+" look for tags up the file path
+set tags=tags;/
 
-set number
 set autoindent
-set viminfo='20,\"50
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
-set expandtab
 set backspace=2
-set smarttab
-set showmatch
-set hlsearch
-set incsearch
-set foldmethod=indent
+set cursorline
+set expandtab
 set foldlevel=10
-" set cursorline
+set foldmethod=indent
+set hlsearch
+set ignorecase
+set incsearch
+set mouse=a
+set nobackup
+set nocompatible
+set noerrorbells
+set nohidden
+set nowritebackup
+set number
+set ruler
+set scrolloff=5
+set shiftwidth=4
+set showcmd
+set showmatch
+set smartcase
+set smarttab
+set softtabstop=4
+set t_Co=256
+set t_vb=<Esc>|f
+set tabstop=4
+set viminfo='20,\"50
+set visualbell 
 " set listchars=tab:▸\ ,eol:¬
 " set list
 
+colorscheme solarized
 syntax on
 filetype on
 filetype plugin on
 
 autocmd FileType python call SetPython()
 function! SetPython() 
-    colorscheme elflord
     setlocal keywordprg=pydoc
     setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
@@ -38,24 +51,45 @@ function! SetPython()
     autocmd BufWritePre *.py %s/\s\+$//e
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
     match OverLength /\%81v.\+/
-    abbreviate prd print "*** [DEBUG]
+    abbreviate prd print "\033[91m*** [DEBUG] \033[0m
     abbreviate pdb import pdb; pdb.set_trace()
 endfunction
 
-" some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
+nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
 
-" let mapleader = ","
+inoremap jk <Esc>
+noremap ; :
+noremap : ;
+
+noremap j gj
+noremap k gk
+
+let mapleader = ","
+
+" window movement
+nmap <silent> <leader>k <C-W>k
+nmap <silent> <leader>j <C-W>j
+nmap <silent> <leader>h <C-W>h
+nmap <silent> <leader>l <C-W>l
+
+" select paste text
+noremap <leader>v V`]
+
+" open tab
+nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in new tab
+nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
+
+" tab movement
+nmap th :tabprevious<CR>
+nmap tl :tabnext<CR>
+
+" some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
 " nmap <silent> <leader>l :set list!<CR>
 " nmap <silent> <leader>w :set wrap!<CR>
 " nmap <silent> <leader>s :set spell!<CR>
 " nmap <silent> <leader>n :silent :nohlsearch<CR>
 
 " window switching
-let mapleader = ","
-nmap <silent> <leader>k <C-W>k
-nmap <silent> <leader>j <C-W>j
-nmap <silent> <leader>h <C-W>h
-nmap <silent> <leader>l <C-W>l
 
 " tab switching
 " map <D-S-]> gt
