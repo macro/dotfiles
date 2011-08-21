@@ -1,7 +1,7 @@
 dotfiles
 =======
 
-    ::
+setup::
 
     cd dotfiles
     git submodule init
@@ -10,6 +10,6 @@ dotfiles
 dotvim
 ------
 
-    ::
+setup::
 
     ln -s dotfiles/dotvim ~/.vim
