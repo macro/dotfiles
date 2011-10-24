@@ -5,6 +5,7 @@ call pathogen#helptags()
 set tags=tags;/
 
 set autoindent
+set laststatus=2
 set backspace=2
 set cursorline
 set expandtab
@@ -13,7 +14,7 @@ set foldmethod=indent
 set hlsearch
 set ignorecase
 set incsearch
-set mouse=a
+set mouse=c
 set nobackup
 set nocompatible
 set noerrorbells

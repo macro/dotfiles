@@ -13,7 +13,6 @@ bind -m vi-insert "\C-n":menu-complete
 # ^l clear screen
 bind -m vi-insert "\C-l":clear-screen
 
-
 GIT=`which git`
 git ()
 {
@@ -29,18 +28,9 @@ git ()
     if [ "$VIRTUAL_ENV" != "" ]; then
         ENV="-(`basename $VIRTUAL_ENV`)"
     fi
-    if [ "$1" == "st" ]; then
-        shift 1
-        $GIT status $@
-    elif [ "$1" == "merge" ]; then
+    if [ "$1" == "merge" ]; then
         shift 1
         $GIT merge --no-ff $@
-    elif [ "$1" == "co" ]; then
-        shift 1
-        $GIT checkout $@ 
-    elif [ "$1" == "ci" ]; then
-        shift 1
-        $GIT commit $@
     elif [ "$1" == "log" ]; then
         shift 1
         $GIT log --graph $@
@@ -65,3 +55,5 @@ pyf ()
 
 PYTHONSTARTUP=~/dotfiles/pythonrc.py
 export PYTHONSTARTUP
+# git pager
+export PAGER='less -R'
