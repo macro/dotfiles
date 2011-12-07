@@ -77,8 +77,10 @@ nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in 
 nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
 
 " tab movement
-nmap <silent> th :tabprevious<CR>
-nmap <silent> tl :tabnext<CR>
+"nmap <silent> th :tabprevious<CR>
+"nmap <silent> tl :tabnext<CR>
+nmap <silent> <leader>th :tabprevious<CR>
+nmap <silent> <leader>tl :tabnext<CR>
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
 " nmap <silent> <leader>l :set list!<CR>
@@ -102,6 +104,8 @@ nmap <silent> tl :tabnext<CR>
 " map <D-9> 9gt
 " map <D-0> :tablast<CR>
 
+" auto-resize splits on window resize
+autocmd VimResized * exe "normal! \<c-w>="
 " delete hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " show git branch in status line

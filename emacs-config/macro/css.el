@@ -23,3 +23,5 @@
   (insert "\n")
   (insert "/* @end */")
   (forward-line -2))
+
+(setq global-linum-mode)

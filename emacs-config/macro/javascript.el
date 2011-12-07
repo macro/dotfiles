@@ -74,3 +74,6 @@ list."
                           (current-column)))
                        (continued-expr-p js2-basic-offset)
                        (t 0)))))))
+
+(setq global-linum-mode)
+
