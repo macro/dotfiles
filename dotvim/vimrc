@@ -43,7 +43,7 @@ filetype plugin on
 
 autocmd FileType python call SetPython()
 function! SetPython() 
-    setlocal keywordprg=pydoc
+    setlocal keywordprg=python\ -c\ \"import\ importlib;\ <cword>\ =\ importlib.import_module('<cword>');\ help(<cword>)\"
     setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
     nmap <C-c><C-c> :!pyflakes %
