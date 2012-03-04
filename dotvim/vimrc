@@ -109,7 +109,35 @@ autocmd VimResized * exe "normal! \<c-w>="
 " delete hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " show git branch in status line
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+if has('statusline')
+  set laststatus=2                                          " statusline setup
+  set statusline=   " clear the statusline, allow for rearranging parts
+  set statusline+=%f\                "Path to the file, as typed or relative to current dir
+  set statusline+=[#%n]               "buffer number
+  "set statusline+=%#errormsg#        "change color
+  "set statusline+=%{&ff!='unix'?'['.&ff.']':''}   "display a warning if fileformat isnt unix
+  "set statusline+=%*                "reset color to normal statusline color
+  "set statusline+=%#errormsg#       "change color
+  "set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}   "display a warning if file encoding isnt utf-8
+  "set statusline+=%*                "reset color to normal statusline color
+  set statusline+=\ %y              "filetype
+  set statusline+=%([%R%M]%)        "read-only (RO), modified (+) and unmodifiable (-) flags between braces
+  set statusline+=%{'~'[&pm=='']}   "shows a '~' if in patchmode
+  set statusline+=\ %{fugitive#statusline()}  "show Git info, via fugitive.git
+  "set statusline+=\ (%{synIDattr(synID(line('.'),col('.'),0),'name')}) "DEBUG : display the current syntax item name
+  " set statusline+=%#error#          "change color
+  " set statusline+=%{&paste?'[paste]':''}    "display a warning if &paste is set
+  " set statusline+=%*                "reset color to normal statusline color
+  set statusline+=%=                "right-align following items
+  " set statusline+=\ %l,%L,          "current line number/total number of lines,
+  set statusline+=\ %l,%c                "Column number
+  set statusline+=%V                " -{Virtual column number} (Not displayed if equal to 'c')
+  set statusline+=\ %p%%            "percentage of lines through the file%
+  set statusline+=\                 "trailing space
+  if has('title')
+    set titlestring=%t%(\ [%R%M]%)
+  endif
+endif
 
 " remap :
 noremap ; :
