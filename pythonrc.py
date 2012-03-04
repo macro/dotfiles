@@ -1,8 +1,8 @@
-import os
-import sys
-import dis
 from code import InteractiveConsole
 from tempfile import mkstemp
+import dis
+import os
+import sys
 
 """
     From https://github.com/sontek/dotfiles/blob/master/_pythonrc.py
@@ -19,16 +19,23 @@ except ImportError:
 else:
     import rlcompleter
     readline.parse_and_bind("tab: complete")
-
-__builtins__.dis = dis
-del dis
+#
+# make dis a builtin
+#
+try:
+    import __builtin__
+    __builtin__.dis = dis
+except ImportError:
+    __builtins__.dis = dis
+finally:
+    del dis
 
 #
 # pretty print
 #
-import pprint
 def my_displayhook(value):
     if value is not None:
+        import pprint
         try:
             import __builtin__
             __builtin__._ = value
@@ -42,27 +49,31 @@ sys.displayhook = my_displayhook
 #
 EDITOR = os.environ.get('EDITOR', 'vim')
 EDIT_CMD = '\e'
-class EditableBufferInteractiveConsole(InteractiveConsole):
+class EditableBufferInteractiveConsole(InteractiveConsole, object):
     def __init__(self, *args, **kwargs):
         self.last_buffer = [] # This holds the last executed statement
-        InteractiveConsole.__init__(self, *args, **kwargs)
+        self._super = super(EditableBufferInteractiveConsole, self)
+        self._super.__init__(*args, **kwargs)
 
     def runsource(self, source, *args):
-        self.last_buffer = [ source.encode('latin-1') ]
-        return InteractiveConsole.runsource(self, source, *args)
+        if source.strip():
+            self.last_buffer = [source.encode('latin-1')]
+        return self._super.runsource(source, *args)
 
     def raw_input(self, *args):
-        line = InteractiveConsole.raw_input(self, *args)
-        if line == EDIT_CMD:
+        line = self._super.raw_input(*args)
+        if line.strip() == EDIT_CMD:
             fd, tmpfl = mkstemp('.py')
             os.write(fd, b'\n'.join(self.last_buffer))
             os.close(fd)
             os.system('%s %s' % (EDITOR, tmpfl))
             line = open(tmpfl).read()
             os.unlink(tmpfl)
-            tmpfl = ''
-            lines = line.split( '\n' )
-            for i in range(len(lines) - 1): self.push( lines[i] )
+            del tmpfl
+            lines = line.split('\n')
+            for _line in lines:
+                self.push(_line)
+            self.last_buffer = [line.encode('latin-1')]
             line = lines[-1]
         return line
 
