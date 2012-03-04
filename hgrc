@@ -1,0 +1,15 @@
+[ui]
+username=Neil Chintomby<nchintomby@gmail.com>
+
+[extensions]
+hgext.bookmarks =
+hggit =
+graphlog = 
+color = 
+pager =
+
+[git]
+intree = true
+
+[pager]
+pager = LESS='FSRX' less
