@@ -18,7 +18,12 @@ except ImportError:
     print("Module readline not available.")
 else:
     import rlcompleter
-    readline.parse_and_bind("tab: complete")
+
+    if 'libedit' in readline.__doc__:
+        # os x 
+        readline.parse_and_bind("bind '\t' rl_complete")
+    else:
+        readline.parse_and_bind("tab: complete")
 #
 # make dis a builtin
 #

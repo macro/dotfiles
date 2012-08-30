@@ -4,6 +4,8 @@ call pathogen#helptags()
 " look for tags up the file path
 set tags=tags;/
 
+set clipboard=unnamed
+
 set autoindent
 set laststatus=2
 set backspace=2
@@ -46,13 +48,14 @@ function! SetPython()
     setlocal keywordprg=python\ -m\ pydoc
     setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
-    nmap <C-c><C-c> :!pyflakes %
+    nmap <C-c><C-c> :!flake8 --ignore=E501 %
     nmap <C-c><C-t> :!nosetests %
     autocmd BufWritePre *.py %s/\s\+$//e
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
     match OverLength /\%81v.\+/
     abbreviate prd print "\033[91m*** [DEBUG] \033[0m
     abbreviate pdb import pdb; pdb.set_trace()
+    abbreviate main() import argparse<CR><CR>def main():<CR>    parser = argparse.ArgumentParser()<CR>args = parser.parse_args()<CR><CR><C-u>if __name__ == '__main__':<CR>    main()
 endfunction
 
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
