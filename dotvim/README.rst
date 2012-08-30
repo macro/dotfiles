@@ -4,7 +4,7 @@ Vim Configuration
 Adding Bundles :: 
 
     cd ~/dotfiles
-    git submodule add https://github.com/altercation/vim-colors-solarized
+    git submodule add https://github.com/altercation/vim-colors-solarized dotvim/bundle/solarized
 
     git add .
     git ci -m "Added the solarized bundle"
