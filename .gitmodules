@@ -64,3 +64,6 @@
 [submodule "emacs-config/vendor/emacs-color-theme-solarized"]
 	path = emacs-config/vendor/emacs-color-theme-solarized
 	url = git://github.com/sellout/emacs-color-theme-solarized
+[submodule "dotvim/bundle/golang"]
+	path = dotvim/bundle/golang
+	url = git://github.com/jnwhiteh/vim-golang.git
