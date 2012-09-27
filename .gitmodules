@@ -67,3 +67,6 @@
 [submodule "dotvim/bundle/golang"]
 	path = dotvim/bundle/golang
 	url = git://github.com/jnwhiteh/vim-golang.git
+[submodule "dotvim/bundle/vimerl"]
+	path = dotvim/bundle/vimerl
+	url = https://github.com/jimenezrick/vimerl

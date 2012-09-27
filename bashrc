@@ -1,6 +1,7 @@
 # build python tags file in current director (needs exuberant tags)
 alias pytags="ctags -R --python-kinds=-i --languages=python . ${1}"
 
+alias ll='ls -alG'
 alias ls='ls -alG'
 
 set -o vi
