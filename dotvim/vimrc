@@ -35,20 +35,24 @@ set t_Co=256
 set tabstop=4
 set viminfo='20,\"50
 set visualbell 
-" set listchars=tab:▸\ ,eol:¬
-" set list
+"set listchars=tab:▸\ ,eol:¬
+"set list
 
 colorscheme solarized
 syntax on
 filetype on
 filetype plugin on
 
+if !has("gui")
+    set background=dark
+endif
+
 autocmd FileType python call SetPython()
 function! SetPython() 
     setlocal keywordprg=python\ -m\ pydoc
     setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
-    nmap <C-c><C-c> :!flake8 --ignore=E501 %
+    nmap <C-c><C-c> :!pyflakes %
     nmap <C-c><C-t> :!nosetests %
     autocmd BufWritePre *.py %s/\s\+$//e
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
@@ -86,26 +90,26 @@ nmap <silent> <leader>th :tabprevious<CR>
 nmap <silent> <leader>tl :tabnext<CR>
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
-" nmap <silent> <leader>l :set list!<CR>
-" nmap <silent> <leader>w :set wrap!<CR>
-" nmap <silent> <leader>s :set spell!<CR>
-" nmap <silent> <leader>n :silent :nohlsearch<CR>
+"nmap <silent> <leader>l :set list!<CR>
+"nmap <silent> <leader>w :set wrap!<CR>
+"nmap <silent> <leader>s :set spell!<CR>
+"nmap <silent> <leader>n :silent :nohlsearch<CR>
 
 " window switching
 
 " tab switching
-" map <D-S-]> gt
-" map <D-S-[> gT
-" map <D-1> 1gt
-" map <D-2> 2gt
-" map <D-3> 3gt
-" map <D-4> 4gt
-" map <D-5> 5gt
-" map <D-6> 6gt
-" map <D-7> 7gt
-" map <D-8> 8gt
-" map <D-9> 9gt
-" map <D-0> :tablast<CR>
+"map <D-S-]> gt
+"map <D-S-[> gT
+"map <D-1> 1gt
+"map <D-2> 2gt
+"map <D-3> 3gt
+"map <D-4> 4gt
+"map <D-5> 5gt
+"map <D-6> 6gt
+"map <D-7> 7gt
+"map <D-8> 8gt
+"map <D-9> 9gt
+"map <D-0> :tablast<CR>
 
 " auto-resize splits on window resize
 autocmd VimResized * exe "normal! \<c-w>="
@@ -128,11 +132,11 @@ if has('statusline')
   set statusline+=%{'~'[&pm=='']}   "shows a '~' if in patchmode
   set statusline+=\ %{fugitive#statusline()}  "show Git info, via fugitive.git
   "set statusline+=\ (%{synIDattr(synID(line('.'),col('.'),0),'name')}) "DEBUG : display the current syntax item name
-  " set statusline+=%#error#          "change color
-  " set statusline+=%{&paste?'[paste]':''}    "display a warning if &paste is set
-  " set statusline+=%*                "reset color to normal statusline color
+  "set statusline+=%#error#          "change color
+  "set statusline+=%{&paste?'[paste]':''}    "display a warning if &paste is set
+  "set statusline+=%*                "reset color to normal statusline color
   set statusline+=%=                "right-align following items
-  " set statusline+=\ %l,%L,          "current line number/total number of lines,
+  "set statusline+=\ %l,%L,          "current line number/total number of lines,
   set statusline+=\ %l,%c                "Column number
   set statusline+=%V                " -{Virtual column number} (Not displayed if equal to 'c')
   set statusline+=\ %p%%            "percentage of lines through the file%
