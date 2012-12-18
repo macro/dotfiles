@@ -1,18 +1,23 @@
 Bootstrap
 ---------
 
-dotfiles
-=======
+Fetch dependencies and setup vim and emacs dotfiles:
 
 ::
 
-    cd dotfiles
-    git submodule init
-    git submodule update
+    $ git clone https://github.com/macro/dotfiles
+    $ cd dotfiles
+    $ python ./bootsrap.py
 
-dotvim
-------
+
+Adding plugins or extensions:
 
 ::
 
-    ln -s dotfiles/dotvim ~/.vim
+    $ git submodule add https://github.com/altercation/vim-colors-solarized dotvim/bundle/solarized
+    $ git add .
+
+    $ git submodule add https://github.com/dimitri/el-get emacs-config/vendor/el-get
+    $ vim ./emacs-config/macro.el  # add line to ./emacs-config/macro.el to load extension
+
+    $ git ci
