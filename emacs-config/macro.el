@@ -17,13 +17,16 @@
 (load "macro/git")
 (load "macro/todo")
 (load "macro/flymake-python-pyflakes")
-(load "macro/viper")
+(load "macro/erlang")
+
+;; evil > viper
+;;(load "macro/viper")
 
 (when (file-exists-p "macro/private")
   (load "macro/private"))
 
-(vendor 'gist)
-(vendor 'growl)
+;;(vendor 'gist)
+;;(vendor 'growl)
 (vendor 'twittering-mode)
 (vendor 'textile-mode)
 (vendor 'yaml-mode)
@@ -34,6 +37,8 @@
 (vendor 'mustache-mode)
 (vendor 'flymake-python-pyflakes)
 (vendor 'python)
+(vendor 'evil)
+(vendor 'el-get)
 
 ;; xemacs sticky modifier keys
 ;; (setq modifier-keys-are-sticky t)
@@ -55,4 +60,3 @@
 
 ;; trucate lines if they are too long
 (setq-default truncate-lines t)
-

@@ -70,3 +70,9 @@
 [submodule "dotvim/bundle/vimerl"]
 	path = dotvim/bundle/vimerl
 	url = https://github.com/jimenezrick/vimerl
+[submodule "emacs-config/vendor/evil"]
+	path = emacs-config/vendor/evil
+	url = git://gitorious.org/evil/evil.git
+[submodule "emacs-config/vendor/el-get"]
+	path = emacs-config/vendor/el-get
+	url = git://github.com/dimitri/el-get.git

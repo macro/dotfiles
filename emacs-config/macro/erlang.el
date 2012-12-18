@@ -1,4 +1,4 @@
-(let* ((emacs-version "2.6.4")
+(let* ((emacs-version "2.6.8")
        (tools-path
         (concat "/usr/local/lib/erlang/lib/tools-" emacs-version "/emacs")))
   (when (file-exists-p tools-path)
