@@ -2,7 +2,7 @@
 (global-set-key "\C-x\C-b" 'buffer-menu)
 (global-set-key "\C-x\C-m" 'execute-extended-command)
 (global-set-key "\C-c\C-m" 'execute-extended-command)
-(global-set-key "\C-c\C-g" 'gist-buffer-confirm)
+;(global-set-key "\C-c\C-g" 'gist-buffer-confirm)
 (global-set-key "\C-xg" 'magit-status)
 (global-set-key "\M-i" 'insert-soft-tab)
 (global-set-key "\M-z" 'user-zap-to-char)

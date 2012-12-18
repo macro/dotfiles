@@ -11,13 +11,14 @@
 (load "macro/defuns")
 (load "macro/bindings")
 (load "macro/modes")
-(load "macro/theme")
+;(load "macro/theme")
 (load "macro/temp_files")
 (load "macro/github")
 (load "macro/git")
 (load "macro/todo")
 (load "macro/flymake-python-pyflakes")
 (load "macro/erlang")
+(load "macro/solarized")
 
 ;; evil > viper
 ;;(load "macro/viper")
@@ -60,3 +61,15 @@
 
 ;; trucate lines if they are too long
 (setq-default truncate-lines t)
+
+
+;;; C-c as general purpose escape key sequence.
+;;;
+(defun my-esc (prompt)
+  "Functionality for escaping generally.  Includes exiting Evil insert state and C-g binding. "
+  (cond
+   ((or (evil-insert-state-p) (evil-normal-state-p) (evil-replace-state-p) (evil-visual-state-p)) [escape])
+   (t (kbd "C-g"))))
+(define-key key-translation-map (kbd "C-c") 'my-esc)
+(define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
+;(set-quit-char "C-c")
