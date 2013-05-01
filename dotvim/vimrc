@@ -64,6 +64,10 @@ endfunction
 
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
 
+" highlight trailing space
+highlight TrailingSpace ctermbg=darkred ctermfg=white guibg=#592929
+match TrailingSpace /\s\+$/
+
 inoremap jk <Esc>
 noremap j gj
 noremap k gk

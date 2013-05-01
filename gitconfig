@@ -15,3 +15,6 @@
     co = checkout
     df = diff
     lg = log -p
+
+[merge]
+    conflictstyle = diff3

@@ -32,10 +32,11 @@ if __name__ == '__main__':
     setup_submodules()
 
     # dotfiles
-    setup_symlink('./inputrc', '~/.inputrc')
-    setup_symlink('./hgrc', '~/.hgrc')
-    setup_symlink('./pythonrc.py', '~/.pythonrc')
     setup_symlink('./bashrc', '~/.bashrc')
+    setup_symlink('./hgrc', '~/.hgrc')
+    setup_symlink('./inputrc', '~/.inputrc')
+    setup_symlink('./pythonrc.py', '~/.pythonrc')
+    setup_symlink('./tmux.conf', '~/.tmux.conf')
 
     # vim
     setup_symlink('./dotfiles', '~/.vim')
