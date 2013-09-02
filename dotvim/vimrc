@@ -115,6 +115,10 @@ nmap <silent> <leader>tl :tabnext<CR>
 "map <D-9> 9gt
 "map <D-0> :tablast<CR>
 
+" ctrlp
+nmap <silent> <leader>p :CtrlP<CR>
+
+
 " auto-resize splits on window resize
 autocmd VimResized * exe "normal! \<c-w>="
 " delete hidden buffers
