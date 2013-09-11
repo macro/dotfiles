@@ -82,3 +82,6 @@
 [submodule "dotvim/bundle/vim-markdown"]
 	path = dotvim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule "dotvim/bundle/visual-star-search"]
+	path = dotvim/bundle/visual-star-search
+	url = git@github.com:nelstrom/vim-visual-star-search.git
