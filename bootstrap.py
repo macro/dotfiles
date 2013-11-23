@@ -39,7 +39,8 @@ if __name__ == '__main__':
     setup_symlink('./tmux.conf', '~/.tmux.conf')
 
     # vim
-    setup_symlink('./dotfiles', '~/.vim')
+    setup_symlink('./dotfiles/dotvim', '~/.vim')
+    setup_symlink('./dotfiles/dotvim/vimrc', '~/.vimrc')
 
     # emacs
     setup_symlink('./emacs-config/emacs.el', '~/.emacs')
