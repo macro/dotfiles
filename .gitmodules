@@ -78,10 +78,10 @@
 	url = git://github.com/dimitri/el-get.git
 [submodule "dotvim/bundle/ctrlp"]
 	path = dotvim/bundle/ctrlp
-	url = git@github.com:kien/ctrlp.vim.git
+	url = https://github.com/kien/ctrlp.vim.git
 [submodule "dotvim/bundle/vim-markdown"]
 	path = dotvim/bundle/vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
 [submodule "dotvim/bundle/visual-star-search"]
 	path = dotvim/bundle/visual-star-search
-	url = git@github.com:nelstrom/vim-visual-star-search.git
+	url = https://github.com/nelstrom/vim-visual-star-search.git
