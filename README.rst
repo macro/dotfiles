@@ -7,7 +7,7 @@ Fetch dependencies and setup vim and emacs dotfiles:
 
     $ git clone https://github.com/macro/dotfiles
     $ cd dotfiles
-    $ python ./bootsrap.py
+    $ python ./bootstrap.py
 
 
 Adding plugins or extensions:
