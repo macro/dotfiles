@@ -71,6 +71,8 @@ match TrailingSpace /\s\+$/
 inoremap jk <Esc>
 noremap j gj
 noremap k gk
+" complete closing tab
+iabbrev </ </<C-X><C-O>
 
 let mapleader = ","
 

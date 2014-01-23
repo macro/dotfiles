@@ -37,6 +37,7 @@ if __name__ == '__main__':
     setup_symlink('./inputrc', '~/.inputrc')
     setup_symlink('./pythonrc.py', '~/.pythonrc')
     setup_symlink('./tmux.conf', '~/.tmux.conf')
+    setup_symlink('./slate', '~/.slate')
 
     # vim
     setup_symlink('./dotfiles/dotvim', '~/.vim')
