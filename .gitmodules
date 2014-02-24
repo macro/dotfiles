@@ -85,3 +85,6 @@
 [submodule "dotvim/bundle/visual-star-search"]
 	path = dotvim/bundle/visual-star-search
 	url = https://github.com/nelstrom/vim-visual-star-search.git
+[submodule "dotvim/bundle/recover"]
+	path = dotvim/bundle/recover
+	url = https://github.com/chrisbra/Recover.vim
