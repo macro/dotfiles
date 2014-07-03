@@ -88,3 +88,6 @@
 [submodule "dotvim/bundle/recover"]
 	path = dotvim/bundle/recover
 	url = https://github.com/chrisbra/Recover.vim
+[submodule "dotvim/bundle/clang_complete"]
+	path = dotvim/bundle/clang_complete
+	url = https://github.com/Rip-Rip/clang_complete
