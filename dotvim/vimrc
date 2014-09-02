@@ -4,7 +4,7 @@ call pathogen#helptags()
 " look for tags up the file path
 set tags=tags;/
 
-set clipboard=unnamed
+" set clipboard=unnamed
 
 set autoindent
 set laststatus=2
@@ -52,7 +52,7 @@ function! SetPython()
     setlocal keywordprg=python\ -m\ pydoc
     setlocal makeprg=pyflakes\ %   
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
-    nmap <C-c><C-c> :!pyflakes %
+    nmap <C-c><C-c> :!flake8 %
     nmap <C-c><C-t> :!nosetests %
     autocmd BufWritePre *.py %s/\s\+$//e
     highlight OverLength ctermbg=darkred ctermfg=white guibg=#592929
@@ -159,3 +159,24 @@ endif
 " remap :
 noremap ; :
 
+" Double escape when tmuxing
+function! TmuxEscape(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+" Autotoggle paste
+let &t_SI .= TmuxEscape("\<Esc>[?2004h")
+let &t_EI .= TmuxEscape("\<Esc>[?2004l")
+
+function! TermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ TermPasteBegin()
