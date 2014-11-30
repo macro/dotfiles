@@ -94,3 +94,6 @@
 [submodule "dotvim/bundle/LeaderF"]
 	path = dotvim/bundle/LeaderF
 	url = https://github.com/Yggdroot/LeaderF
+[submodule "dotvim/bundle/vim-markdown-folding"]
+	path = dotvim/bundle/vim-markdown-folding
+	url = https://github.com/nelstrom/vim-markdown-folding.git

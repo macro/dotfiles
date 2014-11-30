@@ -180,3 +180,7 @@ function! TermPasteBegin()
 endfunction
 
 inoremap <special> <expr> <Esc>[200~ TermPasteBegin()
+
+if has("autocmd")
+  filetype plugin indent on
+endif
