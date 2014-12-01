@@ -34,7 +34,7 @@ set softtabstop=4
 set t_Co=256
 set tabstop=4
 set viminfo='20,\"50
-set visualbell 
+set visualbell
 "set listchars=tab:▸\ ,eol:¬
 "set list
 
@@ -48,9 +48,9 @@ if !has("gui")
 endif
 
 autocmd FileType python call SetPython()
-function! SetPython() 
+function! SetPython()
     setlocal keywordprg=python\ -m\ pydoc
-    setlocal makeprg=pyflakes\ %   
+    setlocal makeprg=pyflakes\ %
     setlocal errorformat=%+G\ \ File\ \"%f\"\\,\ line\ %l\\,\ in\ %m
     nmap <C-c><C-c> :!flake8 %
     nmap <C-c><C-t> :!nosetests %
@@ -59,7 +59,7 @@ function! SetPython()
     match OverLength /\%81v.\+/
     abbreviate prd print "\033[91m*** [DEBUG] \033[0m
     abbreviate pdb import pdb; pdb.set_trace()
-    abbreviate main() import argparse<CR><CR>def main():<CR>    parser = argparse.ArgumentParser()<CR>args = parser.parse_args()<CR><CR><C-u>if __name__ == '__main__':<CR>    main()
+    abbreviate main() import argparse<CR><CR>def main():<CR>parser = argparse.ArgumentParser()<CR>args = parser.parse_args()<CR><CR><C-u>if __name__ == '__main__':<CR>main()
 endfunction
 
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
