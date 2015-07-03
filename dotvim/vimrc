@@ -59,6 +59,7 @@ function! SetPython()
     match OverLength /\%81v.\+/
     abbreviate prd print "\033[91m*** [DEBUG] \033[0m
     abbreviate pdb import pdb; pdb.set_trace()
+    abbreviate absimp from __future__ import absolute_import
     abbreviate main() import argparse<CR><CR>def main():<CR>parser = argparse.ArgumentParser()<CR>args = parser.parse_args()<CR><CR><C-u>if __name__ == '__main__':<CR>main()
 endfunction
 
