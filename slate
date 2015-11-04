@@ -19,9 +19,15 @@ bind ]:ctrl;cmd        resize +10% +0 bottom-left
 
 # Push Bindings
 bind l:ctrl;cmd  push right bar-resize:screenSizeX/2
-bind h:ctrl;cmd   push left  bar-resize:screenSizeX/2
-bind k:ctrl;cmd     push up    bar-resize:screenSizeY/2
-bind j:ctrl;cmd   push down  bar-resize:screenSizeY/2
+bind h:ctrl;cmd  push left  bar-resize:screenSizeX/2
+bind k:ctrl;cmd  push up    bar-resize:screenSizeY/2
+bind j:ctrl;cmd  push down  bar-resize:screenSizeY/2
+
+bind u:ctrl;cmd  move  0;0 screenSizeX/2;screenSizeY/2
+bind o:ctrl;cmd  move  screenSizeX/2;0 screenSizeX/2;screenSizeY/2
+bind m:ctrl;cmd  move  0;screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind .:ctrl;cmd  move  screenSizeX/2;screenSizeY/2 screenSizeX/2;screenSizeY/2
+
 
 # Nudge Bindings
 bind right:shift;alt nudge +10% +0
@@ -34,9 +40,9 @@ bind 1:ctrl;alt         throw 0 resize
 bind 2:ctrl;alt         throw 1 resize
 bind 3:ctrl;alt         throw 2 resize
 bind l:ctrl;alt;cmd throw right resize
-bind h:ctrl;alt;cmd  throw left  resize
-bind j:ctrl;alt;cmd    throw up    resize
-bind k:ctrl;alt;cmd  throw down  resize
+bind h:ctrl;alt;cmd throw left  resize
+bind j:ctrl;alt;cmd throw up    resize
+bind k:ctrl;alt;cmd throw down  resize
 
 # Focus Bindings
 bind l:shift;cmd    focus right
