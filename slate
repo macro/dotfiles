@@ -28,6 +28,7 @@ bind u:ctrl;cmd  move  0;0 screenSizeX/2;screenSizeY/2
 bind o:ctrl;cmd  move  screenSizeX/2;0 screenSizeX/2;screenSizeY/2
 bind m:ctrl;cmd  move  0;screenSizeY/2 screenSizeX/2;screenSizeY/2
 bind .:ctrl;cmd  move  screenSizeX/2;screenSizeY/2 screenSizeX/2;screenSizeY/2
+bind /:ctrl;cmd  move  0;0/2 screenSizeX;screenSizeY
 
 
 # Nudge Bindings
