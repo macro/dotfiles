@@ -11,23 +11,21 @@
 (load "macro/defuns")
 (load "macro/bindings")
 (load "macro/modes")
-;(load "macro/theme")
+;;(load "macro/theme")
 (load "macro/temp_files")
 (load "macro/github")
 (load "macro/git")
 (load "macro/todo")
-(load "macro/flymake-python-pyflakes")
+;;(load "macro/flymake-python-pyflakes")
 (load "macro/erlang")
 (load "macro/solarized")
-
-;; evil > viper
-;;(load "macro/viper")
 
 (when (file-exists-p "macro/private")
   (load "macro/private"))
 
 ;;(vendor 'gist)
 ;;(vendor 'growl)
+(vendor 'evil)
 (vendor 'twittering-mode)
 (vendor 'textile-mode)
 (vendor 'yaml-mode)
@@ -36,10 +34,13 @@
 (vendor 'lua-mode)
 (vendor 'any-ini-mode)
 (vendor 'mustache-mode)
-(vendor 'flymake-python-pyflakes)
+;;(vendor 'flymake-python-pyflakes)
 (vendor 'python)
-(vendor 'evil)
 (vendor 'el-get)
+
+;; enable evil
+(require 'evil)
+(evil-mode 1)
 
 ;; xemacs sticky modifier keys
 ;; (setq modifier-keys-are-sticky t)

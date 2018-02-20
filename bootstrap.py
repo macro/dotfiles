@@ -44,6 +44,6 @@ if __name__ == '__main__':
     setup_symlink('./dotfiles/dotvim/vimrc', '~/.vimrc')
 
     # emacs
-    setup_symlink('./emacs-config/emacs.el', '~/.emacs')
+    setup_symlink('./emacs-config/dotemacs', '~/.emacs')
     setup_symlink('./emacs-config', '~/.emacs.d')
     setup_emacs_local()

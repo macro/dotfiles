@@ -94,3 +94,15 @@
 [submodule "dotvim/bundle/vim-markdown-folding"]
 	path = dotvim/bundle/vim-markdown-folding
 	url = https://github.com/nelstrom/vim-markdown-folding.git
+[submodule "emacs-config/vendor/evil"]
+	path = emacs-config/vendor/evil
+	url = https://github.com/emacs-evil/evil
+[submodule "emacs-config/vendor/flymake-easy"]
+	path = emacs-config/vendor/flymake-easy
+	url = https://github.com/purcell/flymake-easy
+[submodule "emacs-config/vendor/evil-org-mode"]
+	path = emacs-config/vendor/evil-org-mode
+	url = https://github.com/edwtjo/evil-org-mode
+[submodule "dotvim/bundle/vim-orgmode"]
+	path = dotvim/bundle/vim-orgmode
+	url = https://github.com/jceb/vim-orgmode

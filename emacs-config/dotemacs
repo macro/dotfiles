@@ -1,4 +1,4 @@
-(add-to-list 'load-path "~/.emacs.d")
+(add-to-list 'load-path "~/.emacs.d/lisp")
 
 ;; You're expected to populate .emacs.d/local.el
 ;; with your own code. This file is under .gitignore
