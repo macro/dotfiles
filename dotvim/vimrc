@@ -60,8 +60,17 @@ function! SetPython()
     match OverLength /\%81v.\+/
     abbreviate prd print "\033[91m*** [DEBUG] \033[0m
     abbreviate pdb import pdb; pdb.set_trace()
-    abbreviate absimp from __future__ import absolute_import
+    abbreviate absimp from __future__ import absolute_import, print_function
     abbreviate main() import argparse<CR>import logging<CR><CR><CR>def main():<CR>parser = argparse.ArgumentParser()<CR>parser.add_argument('--debug', default='INFO', required=False, type=str)<CR><C-u>    args = parser.parse_args()<CR>logging.basicConfig(format='[%(asctime)s][%(levelname)s][%(filename)s'<CR>            ':%(lineno)d] %(message)s',<CR>level=getattr(logging, args.debug))<CR><CR><C-u>if __name__ == '__main__':<CR>main()
+endfunction
+
+autocmd FileType javascript call SetJavaScript()
+autocmd FileType html call SetJavaScript()
+function! SetJavaScript()
+    set shiftwidth=2
+    set softtabstop=2
+    set tabstop=2
+    set nowrap
 endfunction
 
 nmap <C-c><C-d> :r !date "+\%Y\%m\%d"<CR>
@@ -78,7 +87,7 @@ iabbrev </ </<C-X><C-O>
 
 let mapleader = ","
 
-" window movement
+" window navigation
 nmap <silent> <leader>k <C-W>k
 nmap <silent> <leader>j <C-W>j
 nmap <silent> <leader>h <C-W>h
@@ -92,11 +101,16 @@ noremap <leader>v V`]
 nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in new tab
 nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
 
-" tab movement
+" tab navigation
 "nmap <silent> th :tabprevious<CR>
 "nmap <silent> tl :tabnext<CR>
 nmap <silent> <leader>th :tabprevious<CR>
 nmap <silent> <leader>tl :tabnext<CR>
+
+" tab movement
+nmap <silent> <leader><C-H> :-tabmove<CR>
+nmap <silent> <leader><C-L> :+tabmove<CR>
+
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
 "nmap <silent> <leader>l :set list!<CR>
@@ -186,4 +200,8 @@ inoremap <special> <expr> <Esc>[200~ TermPasteBegin()
 
 if has("autocmd")
   filetype plugin indent on
+endif
+
+if !has("python") && !has("python3")
+    let g:leaderf_loaded = 1
 endif
