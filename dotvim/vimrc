@@ -1,5 +1,71 @@
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+call plug#begin('~/.vim/plugged')
+
+" substitute, search, and abbreviate multiple variants of a word
+Plug 'tpope/vim-abolish'
+" fuzzy file finder
+Plug 'ctrlpvim/ctrlp.vim'
+" solarized colorscheme
+Plug 'altercation/vim-colors-solarized'
+" git wrapper
+Plug 'tpope/vim-fugitive'
+" tab aligned text
+Plug 'godlygeek/tabular'
+if !exists('$TMUX')
+    nmap <silent> <leader>a= :Tabularize /=<CR>
+    vmap <silent> <leader>a= :Tabularize /=<CR>
+    nmap <silent> <leader>a: :Tabularize /:\zs<CR>
+    vmap <silent> <leader>a: :Tabularize /:\zs<CR>
+endif
+
+" markdown
+Plug 'plasticboy/vim-markdown'
+Plug 'masukomi/vim-markdown-folding'
+" yank stack
+Plug 'vim-scripts/YankRing.vim'
+
+" endings for html, xml, etc. - ehances surround
+Plug 'tpope/vim-ragtag'
+
+" fancy startup screen
+Plug 'mhinz/vim-startify'
+
+" context-aware pasting
+Plug 'sickill/vim-pasta'
+
+" nerdtree
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" code completion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" code completion extensions
+let g:coc_global_extensions = [
+\ 'coc-css',
+\ 'coc-json',
+\ 'coc-tsserver',
+\ 'coc-git',
+\ 'coc-eslint',
+\ 'coc-tslint-plugin',
+\ 'coc-pairs',
+\ 'coc-sh',
+\ 'coc-vimlsp',
+\ 'coc-emmet',
+\ 'coc-prettier',
+\ 'coc-ultisnips',
+\ 'coc-explorer',
+\ 'coc-diagnostic',
+\ 'coc-python',
+\ 'coc-omnisharp',
+\ 'coc-sh',
+\ 'coc-spell-checker',
+\ 'coc-flow',
+\ 'coc-go'
+\ ]
+
+call plug#end()
 
 " look for tags up the file path
 set tags=tags;/
