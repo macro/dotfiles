@@ -70,7 +70,7 @@ call plug#end()
 " look for tags up the file path
 set tags=tags;/
 
-" set clipboard=unnamed
+set clipboard=unnamedplus
 
 set autoindent
 set laststatus=2
