@@ -17,17 +17,18 @@ if !exists('$TMUX')
     vmap <silent> <leader>a: :Tabularize /:\zs<CR>
 endif
 
-" markdown
-Plug 'plasticboy/vim-markdown'
-Plug 'masukomi/vim-markdown-folding'
-" yank stack
-Plug 'vim-scripts/YankRing.vim'
-
-" endings for html, xml, etc. - ehances surround
-Plug 'tpope/vim-ragtag'
+" fancy statusline
+Plug 'vim-airline/vim-airline'
 
 " fancy startup screen
 Plug 'mhinz/vim-startify'
+
+" markdown
+Plug 'plasticboy/vim-markdown', { 'for': 'markdown' }
+Plug 'masukomi/vim-markdown-folding', { 'for': 'markdown' }
+
+" yank stack
+Plug 'vim-scripts/YankRing.vim'
 
 " context-aware pasting
 Plug 'sickill/vim-pasta'
@@ -37,6 +38,20 @@ Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" syntax and indentation for many languages
+Plug 'sheerun/vim-polyglot'
+
+"  snippets engine
+Plug 'SirVer/ultisnips'
+" snippets
+Plug 'honza/vim-snippets'
+" trigger configuration
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " code completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -54,11 +69,13 @@ let g:coc_global_extensions = [
 \ 'coc-vimlsp',
 \ 'coc-emmet',
 \ 'coc-prettier',
-\ 'coc-ultisnips',
+\ 'coc-snippets',
 \ 'coc-explorer',
 \ 'coc-diagnostic',
+"\ 'coc-jedi',
 \ 'coc-python',
 \ 'coc-omnisharp',
+\ 'coc-rls',
 \ 'coc-sh',
 \ 'coc-spell-checker',
 \ 'coc-flow',
@@ -67,10 +84,49 @@ let g:coc_global_extensions = [
 
 call plug#end()
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
 " look for tags up the file path
 set tags=tags;/
 
-set clipboard=unnamedplus
+if system('uname -s') == "Darwin\n"
+  set clipboard=unnamed "OSX
+else
+  set clipboard=unnamedplus "Linux
+endif
+
+" Give more space for displaying messages.
+" set cmdheight=2
+
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
+else
+  inoremap <silent><expr> <c-@> coc#refresh()
+endif
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
 
 set autoindent
 set laststatus=2
@@ -164,8 +220,8 @@ nmap =j :%!python -m json.tool<CR>
 noremap <leader>v V`]
 
 " open tab
-nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in new tab
-nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
+" nmap <silent> <leader>gd :tabnew %:h/<CR>           " open current directory in new tab
+" nmap <silent> <leader>gf :tabnew <cfile><CR>        " open file under cursor in new tab
 
 " tab navigation
 "nmap <silent> th :tabprevious<CR>
@@ -180,9 +236,9 @@ nmap <silent> <leader><C-L> :+tabmove<CR>
 
 " some goodies from https://github.com/nelstrom/dotfiles/blob/master/vimrc
 "nmap <silent> <leader>l :set list!<CR>
-"nmap <silent> <leader>w :set wrap!<CR>
-"nmap <silent> <leader>s :set spell!<CR>
-"nmap <silent> <leader>n :silent :nohlsearch<CR>
+nmap <silent> <leader>w :set wrap!<CR>
+nmap <silent> <leader>s :set spell!<CR>
+nmap <silent> <leader>n :silent :nohlsearch<CR>
 
 " window switching
 
@@ -209,35 +265,36 @@ autocmd VimResized * exe "normal! \<c-w>="
 " delete hidden buffers
 autocmd BufReadPost fugitive://* set bufhidden=delete
 " show git branch in status line
-if has('statusline')
-  set laststatus=2                                          " statusline setup
-  set statusline=   " clear the statusline, allow for rearranging parts
-  set statusline+=%f\                "Path to the file, as typed or relative to current dir
-  set statusline+=[#%n]               "buffer number
-  "set statusline+=%#errormsg#        "change color
-  "set statusline+=%{&ff!='unix'?'['.&ff.']':''}   "display a warning if fileformat isnt unix
-  "set statusline+=%*                "reset color to normal statusline color
-  "set statusline+=%#errormsg#       "change color
-  "set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}   "display a warning if file encoding isnt utf-8
-  "set statusline+=%*                "reset color to normal statusline color
-  set statusline+=\ %y              "filetype
-  set statusline+=%([%R%M]%)        "read-only (RO), modified (+) and unmodifiable (-) flags between braces
-  set statusline+=%{'~'[&pm=='']}   "shows a '~' if in patchmode
-  set statusline+=\ %{fugitive#statusline()}  "show Git info, via fugitive.git
-  "set statusline+=\ (%{synIDattr(synID(line('.'),col('.'),0),'name')}) "DEBUG : display the current syntax item name
-  "set statusline+=%#error#          "change color
-  "set statusline+=%{&paste?'[paste]':''}    "display a warning if &paste is set
-  "set statusline+=%*                "reset color to normal statusline color
-  set statusline+=%=                "right-align following items
-  "set statusline+=\ %l,%L,          "current line number/total number of lines,
-  set statusline+=\ %l,%c                "Column number
-  set statusline+=%V                " -{Virtual column number} (Not displayed if equal to 'c')
-  set statusline+=\ %p%%            "percentage of lines through the file%
-  set statusline+=\                 "trailing space
-  if has('title')
-    set titlestring=%t%(\ [%R%M]%)
-  endif
-endif
+"" if has('statusline')
+""   set laststatus=2                                          " statusline setup
+""   set statusline=   " clear the statusline, allow for rearranging parts
+""   set statusline+=%f\                "Path to the file, as typed or relative to current dir
+""   set statusline+=[#%n]               "buffer number
+""   "set statusline+=%#errormsg#        "change color
+""   "set statusline+=%{&ff!='unix'?'['.&ff.']':''}   "display a warning if fileformat isnt unix
+""   "set statusline+=%*                "reset color to normal statusline color
+""   "set statusline+=%#errormsg#       "change color
+""   "set statusline+=%{(&fenc!='utf-8'&&&fenc!='')?'['.&fenc.']':''}   "display a warning if file encoding isnt utf-8
+""   "set statusline+=%*                "reset color to normal statusline color
+""   set statusline+=\ %y              "filetype
+""   set statusline+=%([%R%M]%)        "read-only (RO), modified (+) and unmodifiable (-) flags between braces
+""   set statusline+=%{'~'[&pm=='']}   "shows a '~' if in patchmode
+""   set statusline+=\ %{fugitive#statusline()}  "show Git info, via fugitive.git
+""   "set statusline+=\ (%{synIDattr(synID(line('.'),col('.'),0),'name')}) "DEBUG : display the current syntax item name
+""   "set statusline+=%#error#          "change color
+""   "set statusline+=%{&paste?'[paste]':''}    "display a warning if &paste is set
+""   "set statusline+=%*                "reset color to normal statusline color
+""   set statusline+=%=                "right-align following items
+""   "set statusline+=\ %l,%L,          "current line number/total number of lines,
+""   set statusline+=\ %l,%c                "Column number
+""   set statusline+=%V                " -{Virtual column number} (Not displayed if equal to 'c')
+""   set statusline+=\ %p%%            "percentage of lines through the file%
+""   set statusline^=%{coc#status()}
+""   set statusline+=\                 "trailing space
+""   if has('title')
+""     set titlestring=%t%(\ [%R%M]%)
+""   endif
+"" endif
 
 " remap :
 noremap ; :
@@ -264,9 +321,26 @@ endfunction
 
 inoremap <special> <expr> <Esc>[200~ TermPasteBegin()
 
+function! TwiddleCase(str)
+  if a:str ==# toupper(a:str)
+    let result = tolower(a:str)
+  elseif a:str ==# tolower(a:str)
+    let result = substitute(a:str,'\(\<\w\+\>\)', '\u\1', 'g')
+  else
+    let result = toupper(a:str)
+  endif
+  return result
+endfunction
+vnoremap ~ y:call setreg('', TwiddleCase(@"), getregtype(''))<CR>gv""Pgv
+
 if has("autocmd")
   filetype plugin indent on
 endif
+
+let g:python_host_prog = '~/opt/neovim/bin/python'
+let g:python3_host_prog = '~/opt/neovim_python3/bin/python3'
+call coc#config('python', {'pythonPath': '~/opt/neovim_python3/bin/python3'})
+
 
 if !has("python") && !has("python3")
     let g:leaderf_loaded = 1

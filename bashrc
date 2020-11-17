@@ -67,6 +67,10 @@ pyf ()
     fi
 }
 
+. $(brew --prefix asdf)/asdf.sh
+
+eval "$(register-python-argcomplete notes)"
+
 #
 # envvars
 #
@@ -74,4 +78,3 @@ export PYTHONSTARTUP=~/dotfiles/pythonrc.py
 export PS1="\u@\h:\W\$ " 
 export PAGER='less -XFRS'
 export EDITOR=vim
-

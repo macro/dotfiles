@@ -105,4 +105,14 @@
 	url = https://github.com/edwtjo/evil-org-mode
 [submodule "dotvim/bundle/vim-orgmode"]
 	path = dotvim/bundle/vim-orgmode
-	url = https://github.com/jceb/vim-orgmode
+    url = https://github.com/jceb/vim-orgmode
+[submodule "dotvim/bundle/swift"]
+	path = dotvim/bundle/swift
+    url = https://github.com/keith/swift.vim.git
+
+[submodule "dotvim/bundle/rust"]
+	path = dotvim/bundle/rust
+    url = https://github.com/rust-lang/rust.vim.git
+[submodule "dotvim/bundle/ale"]
+	path = dotvim/bundle/ale
+	url = https://github.com/dense-analysis/ale.git

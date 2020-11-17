@@ -38,6 +38,7 @@ if __name__ == '__main__':
     setup_symlink('./pythonrc.py', '~/.pythonrc')
     setup_symlink('./tmux.conf', '~/.tmux.conf')
     setup_symlink('./slate', '~/.slate')
+    setup_symlink('./init.vim', '~/.config/nvim/init.vim')
 
     # vim
     setup_symlink('./dotfiles/dotvim', '~/.vim')
