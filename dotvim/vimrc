@@ -10,6 +10,8 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-fugitive'
 " tab aligned text
 Plug 'godlygeek/tabular'
+" golang dev
+Plug 'fatih/vim-go'
 if !exists('$TMUX')
     nmap <silent> <leader>a= :Tabularize /=<CR>
     vmap <silent> <leader>a= :Tabularize /=<CR>
@@ -54,7 +56,7 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 " code completion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " code completion extensions
 let g:coc_global_extensions = [
@@ -72,7 +74,7 @@ let g:coc_global_extensions = [
 \ 'coc-snippets',
 \ 'coc-explorer',
 \ 'coc-diagnostic',
-"\ 'coc-jedi',
+\ 'coc-jedi',
 \ 'coc-python',
 \ 'coc-omnisharp',
 \ 'coc-rls',
@@ -339,7 +341,7 @@ endif
 
 let g:python_host_prog = '~/opt/neovim/bin/python'
 let g:python3_host_prog = '~/opt/neovim_python3/bin/python3'
-call coc#config('python', {'pythonPath': '~/opt/neovim_python3/bin/python3'})
+"call coc#config('python', {'pythonPath': '~/opt/neovim_python3/bin/python3'})
 
 
 if !has("python") && !has("python3")
